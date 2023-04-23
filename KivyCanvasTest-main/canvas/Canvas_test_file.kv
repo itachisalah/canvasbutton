@@ -1,0 +1,53 @@
+<Canvas_Test_View>:
+<mySplitter>:
+
+<Main_app>:
+    id: mainApp
+    FloatLayout:
+
+        GridLayout:
+
+            cols:1
+            pos_hint: {'top': 1,'left': 1}
+            size_hint: 1, 1
+            GridLayout:
+                cols:2
+                pos_hint: {'top': 1,'left': 1}
+                size_hint: 1, 1
+                StencilView:
+                    id:stencil
+                    Canvas_Test_View:
+                        id:scetter
+                        pos:stencil.pos
+                        size:my_image.size
+                        do_retation: False
+                        AsyncImage:
+                            id: my_image
+                            myid:'map'
+                            source:'image/xman.jpg'
+                            size:stencil.width,stencil.height
+                        DragableButton:
+                            text:'Button'
+                            size_hint:None,None
+                            size: '50dp','50dp'
+                            pos: '100dp','200dp'
+                            drag_rectangle:self.x,self.y,self.width,self.height
+                            drag_timeout:10000000
+                            drag_distance:0
+
+                Splitter:
+                    sizable_from:'left'
+                    size_hint: 0.3, 1
+                    min_size:'10dp'
+                    max_size:'300dp'
+                    width:'200dp'
+                    Button:
+                        size_hint: None, None
+                        size: '100dp','50dp'  
+                        text:'ChangePicture'
+                        on_press: mainApp.on_button_click()
+            Button:
+                size_hint: None, None
+                size: '100dp','50dp'  
+                text:'ChangePicture'
+                on_press: mainApp.on_button_click()
